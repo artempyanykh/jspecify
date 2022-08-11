@@ -1,73 +1,34 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>JSpecify: Standard Java annotations for static analysis &mdash; JSpecify  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/tweaks.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/tweaks.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="JSpecify nullness spec draft" href="spec.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="#" class="icon icon-home"> JSpecify
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -75,93 +36,41 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="spec.html">JSpecify nullness spec draft</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user-guide.html">JSpecify user guide</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="#">JSpecify</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="#" class="icon icon-home"></a> &raquo;</li>
-        
       <li>JSpecify: Standard Java annotations for static analysis</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="jspecify-standard-java-annotations-for-static-analysis">
-<h1>JSpecify: Standard Java annotations for static analysis<a class="headerlink" href="#jspecify-standard-java-annotations-for-static-analysis" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="our-goal">
-<h2>Our Goal<a class="headerlink" href="#our-goal" title="Permalink to this headline">¶</a></h2>
+             
+  <section id="jspecify-standard-java-annotations-for-static-analysis">
+<h1>JSpecify: Standard Java annotations for static analysis<a class="headerlink" href="#jspecify-standard-java-annotations-for-static-analysis" title="Permalink to this headline"></a></h1>
+<section id="our-goal">
+<h2>Our Goal<a class="headerlink" href="#our-goal" title="Permalink to this headline"></a></h2>
 <p>Java static analysis tools, such as Error Prone and those built into IDEs, have been very successful at enabling automated refactorings and bug prevention.
 Many of their most beneficial analyses require certain Java annotations (such as <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> or <code class="docutils literal notranslate"><span class="pre">&#64;Immutable</span></code>) to be present in the source or class file.</p>
 <p>Yet for the 15 years since Java annotations were introduced (five years for type-use annotations), users have never had a clear answer for which incarnation of these annotation classes they can safely adopt.
@@ -175,19 +84,19 @@ It has encouraged today’s tools to accept a wide variety of annotations, treat
 <dd><p>We have seen the xkcd comic. Please do not send us the xkcd comic. We know about the xkcd comic.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="activity">
-<h2>Activity<a class="headerlink" href="#activity" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="activity">
+<h2>Activity<a class="headerlink" href="#activity" title="Permalink to this headline"></a></h2>
 <p>The primary location for our day-to-day work is on GitHub: <a class="reference external" href="https://github.com/jspecify/jspecify">https://github.com/jspecify/jspecify</a></p>
-</div>
-<div class="section" id="talks-about-jspecify">
-<h2>Talks about JSpecify<a class="headerlink" href="#talks-about-jspecify" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="talks-about-jspecify">
+<h2>Talks about JSpecify<a class="headerlink" href="#talks-about-jspecify" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://drive.google.com/file/d/15wZ-cVPkfsNYzSez9WrAF4gEjWNzlDAD/view">JVMLS19 overview presentation</a></p></li>
 </ul>
-</div>
-<div class="section" id="participants">
-<h2>Participants<a class="headerlink" href="#participants" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="participants">
+<h2>Participants<a class="headerlink" href="#participants" title="Permalink to this headline"></a></h2>
 <p>People from the following projects and organizations are collaborating on this project:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -200,11 +109,11 @@ It has encouraged today’s tools to accept a wide variety of annotations, treat
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference external" href="https://www.fbinfer.com">Infer</a></p></td>
-<td><p><a class="reference external" href="https://about.facebook.com">Facebook</a></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://www.android.com">Android</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.android.com">Android</a></p></td>
 <td><p><a class="reference external" href="https://google.com">Google</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://eisop.uwaterloo.ca">EISOP</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eisop">EISOP Team</a></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://errorprone.info">Error Prone</a></p></td>
 <td><p><a class="reference external" href="https://google.com">Google</a></p></td>
@@ -212,14 +121,20 @@ It has encouraged today’s tools to accept a wide variety of annotations, treat
 <tr class="row-odd"><td><p><a class="reference external" href="https://github.com/google/guava">Guava</a></p></td>
 <td><p><a class="reference external" href="https://google.com">Google</a></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.fbinfer.com">Infer</a></p></td>
+<td><p><a class="reference external" href="https://about.facebook.com">Meta</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a></p></td>
 <td><p><a class="reference external" href="https://www.jetbrains.com/">JetBrains</a></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://kotlinlang.org/">Kotlin</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://kotlinlang.org/">Kotlin</a></p></td>
 <td><p><a class="reference external" href="https://www.jetbrains.com/">JetBrains</a></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/uber/NullAway">NullAway</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/uber/NullAway">NullAway</a></p></td>
 <td><p><a class="reference external" href="https://uber.com">Uber</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://openjdk.java.net">OpenJDK</a></p></td>
+<td><p><a class="reference external" href="https://www.oracle.com">Oracle</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://pmd.github.io/">PMD</a></p></td>
 <td><p><a class="reference external" href="https://pmd.github.io/">PMD Team</a></p></td>
@@ -245,65 +160,48 @@ It has encouraged today’s tools to accept a wide variety of annotations, treat
 <li class="toctree-l1"><a class="reference internal" href="user-guide.html">JSpecify user guide</a></li>
 </ul>
 </div>
-</div>
-<div class="section" id="contact-info">
-<h2>Contact Info<a class="headerlink" href="#contact-info" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="contact-info">
+<h2>Contact Info<a class="headerlink" href="#contact-info" title="Permalink to this headline"></a></h2>
 <p>Email the group at &lt;<a class="reference external" href="mailto:jspecify-dev&#37;&#52;&#48;googlegroups&#46;com">jspecify-dev<span>&#64;</span>googlegroups<span>&#46;</span>com</a>&gt;.</p>
-</div>
-<div class="section" id="indices-and-searches">
-<h2>Indices and searches<a class="headerlink" href="#indices-and-searches" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="indices-and-searches">
+<h2>Indices and searches<a class="headerlink" href="#indices-and-searches" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="spec.html" class="btn btn-neutral float-right" title="JSpecify nullness spec draft" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2018-2021, The JSpecify Authors.
-
-    </p>
+    <p>&#169; Copyright 2018-2022, The JSpecify Authors.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

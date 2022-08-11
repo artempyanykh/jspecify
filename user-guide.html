@@ -1,73 +1,34 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>JSpecify user guide &mdash; JSpecify  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/tweaks.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/tweaks.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="JSpecify nullness spec draft" href="spec.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="index.html" class="icon icon-home"> JSpecify
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -75,18 +36,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="spec.html">JSpecify nullness spec draft</a></li>
@@ -111,122 +61,83 @@
 </li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">JSpecify</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
       <li>JSpecify user guide</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="_sources/user-guide.md.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="tex2jax_ignore mathjax_ignore section" id="jspecify-user-guide">
-<h1>JSpecify user guide<a class="headerlink" href="#jspecify-user-guide" title="Permalink to this headline">¶</a></h1>
+             
+  <section id="jspecify-user-guide">
+<h1>JSpecify user guide<a class="headerlink" href="#jspecify-user-guide" title="Permalink to this headline"></a></h1>
 <p>In Java code, whether an expression may evaluate to null is often documented
-only in natural language, if at all.  The goal of JSpecify is to permit
+only in natural language, if at all. The goal of JSpecify is to permit
 programmers to express specifications (initially, just nullness properties) in a
 machine-readable way.</p>
-<p>JSpecify defines annotations that describe whether a Java type contains the value null.
-Such annotations are useful to (for example):</p>
+<p>JSpecify defines annotations that describe whether a Java type contains the
+value null. Such annotations are useful to (for example):</p>
 <ul class="simple">
 <li><p>programmers reading the code,</p></li>
 <li><p>tools that help developers avoid NullPointerExceptions,</p></li>
 <li><p>tools that perform run-time checking and test generation, and</p></li>
 <li><p>documentation systems.</p></li>
 </ul>
-<div class="section" id="java-variables-are-references">
-<h2>Java variables are references<a class="headerlink" href="#java-variables-are-references" title="Permalink to this headline">¶</a></h2>
+<section id="java-variables-are-references">
+<h2>Java variables are references<a class="headerlink" href="#java-variables-are-references" title="Permalink to this headline"></a></h2>
 <p>In Java, all non-primitive variables are references. We often think of <code class="docutils literal notranslate"><span class="pre">String</span> <span class="pre">x</span></code> as meaning “<code class="docutils literal notranslate"><span class="pre">x</span></code> is a <code class="docutils literal notranslate"><span class="pre">String</span></code>”, but actually it means “<code class="docutils literal notranslate"><span class="pre">x</span></code> is a <em>reference</em>,
 either null or a reference to a string object”.</p>
 <p>JSpecify includes a <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code> annotation. In code covered by that
 annotation, <code class="docutils literal notranslate"><span class="pre">String</span> <span class="pre">x</span></code> means “<code class="docutils literal notranslate"><span class="pre">x</span></code> is a reference to a string object”, and
-<code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String</span> <span class="pre">x</span></code> means “<code class="docutils literal notranslate"><span class="pre">x</span></code> is either null or a reference to a string object”</p>
-</div>
-<div class="section" id="types-and-nullness">
-<h2>Types and nullness<a class="headerlink" href="#types-and-nullness" title="Permalink to this headline">¶</a></h2>
+<code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String</span> <span class="pre">x</span></code> means “<code class="docutils literal notranslate"><span class="pre">x</span></code> is either null or a reference to a string
+object”</p>
+</section>
+<section id="types-and-nullness">
+<h2>Types and nullness<a class="headerlink" href="#types-and-nullness" title="Permalink to this headline"></a></h2>
 <p>Each reference can have one of three possible properties regarding nullness:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>JSpecify annotations indicate that it can be null.</p></li>
 <li><p>JSpecify annotations indicate that it can’t be null.</p></li>
 <li><p>JSpecify annotations don’t indicate whether it can be null.</p></li>
 </ol>
-<p>For a given reference <code class="docutils literal notranslate"><span class="pre">x</span></code>, if <code class="docutils literal notranslate"><span class="pre">x</span></code> can be null then <code class="docutils literal notranslate"><span class="pre">x.getClass()</span></code> is unsafe because
-it could produce a NullPointerException. If <code class="docutils literal notranslate"><span class="pre">x</span></code> can’t be null, <code class="docutils literal notranslate"><span class="pre">x.getClass()</span></code>
-can never produce a NullPointerException. If JSpecify annotations haven’t said
-whether <code class="docutils literal notranslate"><span class="pre">x</span></code> can be null or not, we don’t know whether <code class="docutils literal notranslate"><span class="pre">x.getClass()</span></code> is safe (at
-least as far as JSpecify is concerned).</p>
+<p>For a given reference <code class="docutils literal notranslate"><span class="pre">x</span></code>, if <code class="docutils literal notranslate"><span class="pre">x</span></code> can be null then <code class="docutils literal notranslate"><span class="pre">x.getClass()</span></code> is unsafe
+because it could produce a NullPointerException. If <code class="docutils literal notranslate"><span class="pre">x</span></code> can’t be null,
+<code class="docutils literal notranslate"><span class="pre">x.getClass()</span></code> can never produce a NullPointerException. If JSpecify annotations
+haven’t said whether <code class="docutils literal notranslate"><span class="pre">x</span></code> can be null or not, we don’t know whether
+<code class="docutils literal notranslate"><span class="pre">x.getClass()</span></code> is safe (at least as far as JSpecify is concerned).</p>
 <p>There are two JSpecify annotations that indicate these properties:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> applied to a type means a reference of that type that can be null.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code> applied to a module, package, or class means that a reference in
-that scope can’t be null unless its type is explicitly marked <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code>. (Below
-we will see that there are some exceptions to this for <a class="reference external" href="#local-variables">local
-variables</a> and <a class="reference external" href="#defining-generics">type variables</a>.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> applied to a type means a reference of that type can be null.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code> applied to a module, package, or class means that a reference
+in that scope can’t be null unless its type is explicitly marked
+<code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code>. (Below we will see that there are some exceptions to this for
+<span class="xref myst">local variables</span> and
+<span class="xref myst">type variables</span>.)</p></li>
 </ul>
 <p>The notion of “can’t be null” should really be read with a footnote that says
-“if all the code in question is <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code>”. For example, if you have some code
-that is not <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code> and that calls a <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code> method, then tools might
-allow it to pass a possibly-null value to a method that is expecting a “can’t be
-null” parameter.</p>
-</div>
-<div class="section" id="nullable">
-<h2><code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code><a class="headerlink" href="#nullable" title="Permalink to this headline">¶</a></h2>
+“if all the code in question is <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code>”. For example, if you have some
+code that is not <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code> and that calls a <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code> method, then tools
+might allow it to pass a possibly-null value to a method that is expecting a
+“can’t be null” parameter.</p>
+</section>
+<section id="nullable">
+<h2><code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code><a class="headerlink" href="#nullable" title="Permalink to this headline"></a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> annotation applied to a type means that that use of the type
 includes references that can be null. Code that deals with those references must
 be able to deal with the null case.</p>
@@ -235,16 +146,16 @@ be able to deal with the null case.</p>
   <span class="p">}</span>
 </pre></div>
 </div>
-<p>In this example, the parameter <code class="docutils literal notranslate"><span class="pre">x</span></code> can be null, so <code class="docutils literal notranslate"><span class="pre">print(null)</span></code> is a valid method
-call. The body of the <code class="docutils literal notranslate"><span class="pre">print</span></code> method does not do anything with <code class="docutils literal notranslate"><span class="pre">x</span></code> that would
-provoke a NullPointerException so this method is safe.</p>
+<p>In this example, the parameter <code class="docutils literal notranslate"><span class="pre">x</span></code> can be null, so <code class="docutils literal notranslate"><span class="pre">print(null)</span></code> is a valid
+method call. The body of the <code class="docutils literal notranslate"><span class="pre">print</span></code> method does not do anything with <code class="docutils literal notranslate"><span class="pre">x</span></code> that
+would provoke a NullPointerException so this method is safe.</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span>  <span class="kd">static</span> <span class="nd">@Nullable</span> <span class="n">String</span> <span class="nf">emptyToNull</span><span class="p">(</span><span class="nd">@Nullable</span> <span class="n">String</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">x</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span> <span class="o">?</span> <span class="kc">null</span> <span class="p">:</span> <span class="n">x</span><span class="p">;</span>
   <span class="p">}</span>
 </pre></div>
 </div>
-<p>In this example, the parameter <code class="docutils literal notranslate"><span class="pre">x</span></code> can still be null, but now the return value can
-be too. You might use this method like this:</p>
+<p>In this example, the parameter <code class="docutils literal notranslate"><span class="pre">x</span></code> can still be null, but now the return value
+can be too. You might use this method like this:</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span>  <span class="kt">void</span> <span class="nf">doSomething</span><span class="p">(</span><span class="nd">@Nullable</span> <span class="n">String</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">print</span><span class="p">(</span><span class="n">emptyToNull</span><span class="p">(</span><span class="n">x</span><span class="p">));</span>
     <span class="c1">// OK: print accepts a @Nullable String</span>
@@ -262,11 +173,10 @@ of type <code class="docutils literal notranslate"><span class="pre">&#64;Nullab
 <code class="docutils literal notranslate"><span class="pre">String</span></code> is a <em>subtype</em> of <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String</span></code>, in the same way that <code class="docutils literal notranslate"><span class="pre">Integer</span></code> is
 a subtype of <code class="docutils literal notranslate"><span class="pre">Number</span></code>. One way to look at this is that a subtype narrows the
 range of possibilities. A <code class="docutils literal notranslate"><span class="pre">Number</span></code> variable can be assigned from an <code class="docutils literal notranslate"><span class="pre">Integer</span></code>
-but it can also be assigned from a <code class="docutils literal notranslate"><span class="pre">Long</span></code>. Meanwhile an <code class="docutils literal notranslate"><span class="pre">Integer</span></code> variable
-can’t be assigned from a <code class="docutils literal notranslate"><span class="pre">Number</span></code> (since that <code class="docutils literal notranslate"><span class="pre">Number</span></code> might be a <code class="docutils literal notranslate"><span class="pre">Long</span></code> or some
-other subtype). Likewise, a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String</span></code> can be assigned from a
-<code class="docutils literal notranslate"><span class="pre">String</span></code> but a <code class="docutils literal notranslate"><span class="pre">String</span></code> can’t be assigned from a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String</span></code> (since that
-might be null).</p>
+but it can also be assigned from a <code class="docutils literal notranslate"><span class="pre">Long</span></code>. Meanwhile an <code class="docutils literal notranslate"><span class="pre">Integer</span></code> variable can’t
+be assigned from a <code class="docutils literal notranslate"><span class="pre">Number</span></code> (since that <code class="docutils literal notranslate"><span class="pre">Number</span></code> might be a <code class="docutils literal notranslate"><span class="pre">Long</span></code> or some other
+subtype). Likewise, a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String</span></code> can be assigned from a <code class="docutils literal notranslate"><span class="pre">String</span></code> but a
+<code class="docutils literal notranslate"><span class="pre">String</span></code> can’t be assigned from a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String</span></code> (since that might be null).</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@NullMarked</span>
 <span class="kd">class</span> <span class="nc">Example</span> <span class="p">{</span>
   <span class="kt">void</span> <span class="nf">useNullable</span><span class="p">(</span><span class="nd">@Nullable</span> <span class="n">String</span> <span class="n">x</span><span class="p">)</span> <span class="p">{...}</span>
@@ -278,14 +188,14 @@ might be null).</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="nullmarked">
-<h2><code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code><a class="headerlink" href="#nullmarked" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code> annotation indicates that references can’t be null in its scope,
-unless their types are explicitly marked <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code>. If applied to a module then
-its scope is all the code in the module. If applied to a package then
-its scope is all the code in the package. If applied to a class or interface
-then its scope is all the code in that class or interface.</p>
+</section>
+<section id="nullmarked">
+<h2><code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code><a class="headerlink" href="#nullmarked" title="Permalink to this headline"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code> annotation indicates that references can’t be null in its
+scope, unless their types are explicitly marked <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code>. If applied to a
+module then its scope is all the code in the module. If applied to a package
+then its scope is all the code in the package. If applied to a class or
+interface then its scope is all the code in that class or interface.</p>
 <p>Outside <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String</span></code> still means a reference that can be
 null, but JSpecify doesn’t have anything to say about whether plain <code class="docutils literal notranslate"><span class="pre">String</span></code> can
 be null.</p>
@@ -301,21 +211,21 @@ be null.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In this example, both methods are in the scope of <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code>, so plain <code class="docutils literal notranslate"><span class="pre">String</span></code>
-means “a reference to a string object, not null”. <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String</span></code> continues
-to mean “a reference to a string object, or null”. Tools should warn you if you
-try to pass a “reference to a string object, or null” to <code class="docutils literal notranslate"><span class="pre">spaceIndex</span></code>, since its
-argument can’t be null, and indeed it will throw NullPointerException if given a
-null argument.</p>
+<p>In this example, both methods are in the scope of <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code>, so plain
+<code class="docutils literal notranslate"><span class="pre">String</span></code> means “a reference to a string object, not null”. <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String</span></code>
+continues to mean “a reference to a string object, or null”. Tools should warn
+you if you try to pass a “reference to a string object, or null” to
+<code class="docutils literal notranslate"><span class="pre">spaceIndex</span></code>, since its argument can’t be null, and indeed it will throw
+NullPointerException if given a null argument.</p>
 <p>As mentioned above, there are some exceptions to this interpretation for local
-variables (as we’ll see next) and <a class="reference external" href="#defining-generics">type variables</a>.</p>
-</div>
-<div class="section" id="a-id-local-variables-local-variables-a">
-<h2><a id="local-variables">Local variables</a><a class="headerlink" href="#a-id-local-variables-local-variables-a" title="Permalink to this headline">¶</a></h2>
-<p>Tools that understand JSpecify annotations typically <em>don’t</em> require <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> to
-be applied to local variables. They may in fact not even allow that. The reason
-is that it should be possible to <em>infer</em> whether a variable can be null based on
-the values that are assigned to the variable. For example:</p>
+variables (as we’ll see next) and <span class="xref myst">type variables</span>.</p>
+</section>
+<section id="a-id-local-variables-local-variables-a">
+<h2><a id="local-variables">Local variables</a><a class="headerlink" href="#a-id-local-variables-local-variables-a" title="Permalink to this headline"></a></h2>
+<p>Tools that understand JSpecify annotations typically <em>don’t</em> require <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code>
+to be applied to local variables. They may in fact not even allow that. The
+reason is that it should be possible to <em>infer</em> whether a variable can be null
+based on the values that are assigned to the variable. For example:</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@NullMarked</span>
 <span class="kd">class</span> <span class="nc">MyClass</span> <span class="p">{</span>
   <span class="kt">void</span> <span class="nf">myMethod</span><span class="p">(</span><span class="nd">@Nullable</span> <span class="n">String</span> <span class="n">one</span><span class="p">,</span> <span class="n">String</span> <span class="n">two</span><span class="p">)</span> <span class="p">{</span>
@@ -329,46 +239,45 @@ the values that are assigned to the variable. For example:</p>
 </pre></div>
 </div>
 <p>Analysis can tell that all of these variables except <code class="docutils literal notranslate"><span class="pre">anotherTwo</span></code> can be null.
-<code class="docutils literal notranslate"><span class="pre">anotherTwo</span></code> can’t be null since <code class="docutils literal notranslate"><span class="pre">two</span></code> can’t be null: it is not <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> and it is
-inside the scope of <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code>. <code class="docutils literal notranslate"><span class="pre">anotherOne</span></code> can be null since it is assigned from
-a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> parameter. <code class="docutils literal notranslate"><span class="pre">oneOrTwo</span></code> can be null because it may assigned from a
-<code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> parameter. And <code class="docutils literal notranslate"><span class="pre">twoOrNull</span></code> can be null because its value comes from a
-method that returns <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String</span></code>.</p>
-</div>
-<div class="section" id="generics">
-<h2>Generics<a class="headerlink" href="#generics" title="Permalink to this headline">¶</a></h2>
+<code class="docutils literal notranslate"><span class="pre">anotherTwo</span></code> can’t be null since <code class="docutils literal notranslate"><span class="pre">two</span></code> can’t be null: it is not <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> and
+it is inside the scope of <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code>. <code class="docutils literal notranslate"><span class="pre">anotherOne</span></code> can be null since it is
+assigned from a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> parameter. <code class="docutils literal notranslate"><span class="pre">oneOrTwo</span></code> can be null because it may
+assigned from a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> parameter. And <code class="docutils literal notranslate"><span class="pre">twoOrNull</span></code> can be null because its
+value comes from a method that returns <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String</span></code>.</p>
+</section>
+<section id="generics">
+<h2>Generics<a class="headerlink" href="#generics" title="Permalink to this headline"></a></h2>
 <p>When you are referencing a generic type, the rules about <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> and
 <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code> are as you would expect from what we have seen. For example,
-<code class="docutils literal notranslate"><span class="pre">List&lt;&#64;Nullable</span> <span class="pre">String&gt;</span></code> means a list where each element is either a reference to
-a string object or it is null. In a <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code> context, <code class="docutils literal notranslate"><span class="pre">List&lt;String&gt;</span></code> means a
-list where each element is a reference to a string object and <em>can’t</em> be null.</p>
-<div class="section" id="a-id-defining-generics-defining-generic-types-a">
-<h3><a id="defining-generics">Defining generic types</a><a class="headerlink" href="#a-id-defining-generics-defining-generic-types-a" title="Permalink to this headline">¶</a></h3>
-<p>Things are a bit more complicated when you are <em>defining</em> a generic type. Consider
-this:</p>
+<code class="docutils literal notranslate"><span class="pre">List&lt;&#64;Nullable</span> <span class="pre">String&gt;</span></code> means a list where each element is either a reference
+to a string object or it is null. In a <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code> context, <code class="docutils literal notranslate"><span class="pre">List&lt;String&gt;</span></code>
+means a list where each element is a reference to a string object and <em>can’t</em> be
+null.</p>
+<section id="a-id-defining-generics-defining-generic-types-a">
+<h3><a id="defining-generics">Defining generic types</a><a class="headerlink" href="#a-id-defining-generics-defining-generic-types-a" title="Permalink to this headline"></a></h3>
+<p>Things are a bit more complicated when you are <em>defining</em> a generic type.
+Consider this:</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@NullMarked</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">NumberList</span><span class="o">&lt;</span><span class="n">E</span> <span class="kd">extends</span> <span class="n">Number</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="p">{...}</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">extends</span> <span class="pre">Number</span></code> defines a <em>bound</em> for the type variable <code class="docutils literal notranslate"><span class="pre">E</span></code>. It means that you
-can write <code class="docutils literal notranslate"><span class="pre">NumberList&lt;Integer&gt;</span></code>, since <code class="docutils literal notranslate"><span class="pre">Integer</span></code> can be assigned to <code class="docutils literal notranslate"><span class="pre">Number</span></code>, but you
-can’t write <code class="docutils literal notranslate"><span class="pre">NumberList&lt;String&gt;</span></code>, since <code class="docutils literal notranslate"><span class="pre">String</span></code> can’t be assigned to <code class="docutils literal notranslate"><span class="pre">Number</span></code>. This
-is standard Java behavior.</p>
-<p>But now let’s think about that bound as it relates to <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code>. Can we write
-<code class="docutils literal notranslate"><span class="pre">NumberList&lt;&#64;Nullable</span> <span class="pre">Integer&gt;</span></code>? The answer is no, because we have <code class="docutils literal notranslate"><span class="pre">&lt;E</span> <span class="pre">extends</span> <span class="pre">Number&gt;</span></code> inside <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code>. Since it is <code class="docutils literal notranslate"><span class="pre">Number</span></code> and not <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">Number</span></code>, that
-means it can’t be null. <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">Integer</span></code> can’t be assigned to it, since that
-<em>can</em> be null. Inside <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code>, you must explicitly provide a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> bound
-on your type variable if you want it to be able to represent a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> type:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">extends</span> <span class="pre">Number</span></code> defines a <em>bound</em> for the type variable <code class="docutils literal notranslate"><span class="pre">E</span></code>. It means that
+you can write <code class="docutils literal notranslate"><span class="pre">NumberList&lt;Integer&gt;</span></code>, since <code class="docutils literal notranslate"><span class="pre">Integer</span></code> can be assigned to
+<code class="docutils literal notranslate"><span class="pre">Number</span></code>, but you can’t write <code class="docutils literal notranslate"><span class="pre">NumberList&lt;String&gt;</span></code>, since <code class="docutils literal notranslate"><span class="pre">String</span></code> can’t be
+assigned to <code class="docutils literal notranslate"><span class="pre">Number</span></code>. This is standard Java behavior.</p>
+<p>But now let’s think about that bound as it relates to <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code>. Can we
+write <code class="docutils literal notranslate"><span class="pre">NumberList&lt;&#64;Nullable</span> <span class="pre">Integer&gt;</span></code>? The answer is no, because we have <code class="docutils literal notranslate"><span class="pre">&lt;E</span> <span class="pre">extends</span> <span class="pre">Number&gt;</span></code> inside <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code>. Since it is <code class="docutils literal notranslate"><span class="pre">Number</span></code> and not <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">Number</span></code>, that means it can’t be null. <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">Integer</span></code> can’t be assigned to
+it, since that <em>can</em> be null. Inside <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code>, you must explicitly provide
+a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> bound on your type variable if you want it to be able to represent
+a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> type:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@NullMarked</span>
 <span class="n">public</span> <span class="k">class</span> <span class="nc">NumberList</span><span class="o">&lt;</span><span class="n">E</span> <span class="n">extends</span> <span class="nd">@Nullable</span> <span class="n">Number</span><span class="o">&gt;</span> <span class="n">implements</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
 </pre></div>
 </div>
-<p>Now it <em>is</em> legal to write <code class="docutils literal notranslate"><span class="pre">NumberList&lt;&#64;Nullable</span> <span class="pre">Integer</span></code>&gt;, since <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">Integer</span></code>
-is assignable to the bound <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">Number</span></code>. It’s <em>also</em> legal to write
-<code class="docutils literal notranslate"><span class="pre">NumberList&lt;Integer&gt;</span></code>, since plain <code class="docutils literal notranslate"><span class="pre">Integer</span></code> is assignable to <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">Number</span></code>.
-Inside <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code>, plain <code class="docutils literal notranslate"><span class="pre">Integer</span></code> means a reference to an actual <code class="docutils literal notranslate"><span class="pre">Integer</span></code> value,
-never null. That just means that the <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">Number</span></code> can technically be null
-but in this case it never will be.</p>
+<p>Now it <em>is</em> legal to write <code class="docutils literal notranslate"><span class="pre">NumberList&lt;&#64;Nullable</span> <span class="pre">Integer</span></code>&gt;, since <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">Integer</span></code> is assignable to the bound <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">Number</span></code>. It’s <em>also</em> legal to
+write <code class="docutils literal notranslate"><span class="pre">NumberList&lt;Integer&gt;</span></code>, since plain <code class="docutils literal notranslate"><span class="pre">Integer</span></code> is assignable to <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">Number</span></code>. Inside <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code>, plain <code class="docutils literal notranslate"><span class="pre">Integer</span></code> means a reference to an actual
+<code class="docutils literal notranslate"><span class="pre">Integer</span></code> value, never null. That just means that the <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">Number</span></code> can
+technically be null but in this case it never will be.</p>
 <p>Of course this assumes that <code class="docutils literal notranslate"><span class="pre">List</span></code> itself is written in a way that allows null:</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@NullMarked</span>
 <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">List</span><span class="o">&lt;</span><span class="n">E</span> <span class="kd">extends</span> <span class="nd">@Nullable</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="p">{...}</span>
@@ -378,20 +287,21 @@ but in this case it never will be.</p>
 be legal. That’s because <code class="docutils literal notranslate"><span class="pre">interface</span> <span class="pre">List&lt;E&gt;</span></code> is short for <code class="docutils literal notranslate"><span class="pre">interface</span> <span class="pre">List&lt;E</span> <span class="pre">extends</span> <span class="pre">Object&gt;</span></code>. Inside <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code>, plain <code class="docutils literal notranslate"><span class="pre">Object</span></code> means “<code class="docutils literal notranslate"><span class="pre">Object</span></code> reference
 that can’t be null”. The <code class="docutils literal notranslate"><span class="pre">&lt;E</span> <span class="pre">extends</span> <span class="pre">&#64;Nullable</span> <span class="pre">Number&gt;</span></code> from NumberList would
 not be compatible with <code class="docutils literal notranslate"><span class="pre">&lt;E</span> <span class="pre">extends</span> <span class="pre">Object&gt;</span></code>.</p>
-<p>The implication of all this is that every time you define a type variable like <code class="docutils literal notranslate"><span class="pre">E</span></code>
-you need to decide whether it can represent a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> type. If it can, then it
-must have a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> bound. Most often this will be <code class="docutils literal notranslate"><span class="pre">&lt;E</span> <span class="pre">extends</span> <span class="pre">&#64;Nullable</span> <span class="pre">Object&gt;</span></code>. On the other hand, if it <em>can’t</em> represent a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> type, that is
-expressed by not having <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> in its bound (including the case of not having
-an explicit bound at all). Here’s another example:</p>
+<p>The implication of all this is that every time you define a type variable like
+<code class="docutils literal notranslate"><span class="pre">E</span></code> you need to decide whether it can represent a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> type. If it can,
+then it must have a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> bound. Most often this will be <code class="docutils literal notranslate"><span class="pre">&lt;E</span> <span class="pre">extends</span> <span class="pre">&#64;Nullable</span> <span class="pre">Object&gt;</span></code>. On the other hand, if it <em>can’t</em> represent a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code>
+type, that is expressed by not having <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> in its bound (including the
+case of not having an explicit bound at all). Here’s another example:</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@NullMarked</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ImmutableList</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="p">{...}</span>
 </pre></div>
 </div>
-<p>Here, because it is <code class="docutils literal notranslate"><span class="pre">ImmutableList&lt;E&gt;</span></code> and not <code class="docutils literal notranslate"><span class="pre">ImmutableList&lt;E</span> <span class="pre">extends</span> <span class="pre">&#64;Nullable</span> <span class="pre">Object&gt;</span></code>, it is not legal to write <code class="docutils literal notranslate"><span class="pre">ImmutableList&lt;&#64;Nullable</span> <span class="pre">String&gt;</span></code>. You can only
-write <code class="docutils literal notranslate"><span class="pre">ImmutableList&lt;String&gt;</span></code>, which is a list of non-null <code class="docutils literal notranslate"><span class="pre">String</span></code> references.</p>
-</div>
-<div class="section" id="using-type-variables-in-generic-types">
-<h3>Using type variables in generic types<a class="headerlink" href="#using-type-variables-in-generic-types" title="Permalink to this headline">¶</a></h3>
+<p>Here, because it is <code class="docutils literal notranslate"><span class="pre">ImmutableList&lt;E&gt;</span></code> and not <code class="docutils literal notranslate"><span class="pre">ImmutableList&lt;E</span> <span class="pre">extends</span> <span class="pre">&#64;Nullable</span> <span class="pre">Object&gt;</span></code>, it is not legal to write <code class="docutils literal notranslate"><span class="pre">ImmutableList&lt;&#64;Nullable</span> <span class="pre">String&gt;</span></code>.
+You can only write <code class="docutils literal notranslate"><span class="pre">ImmutableList&lt;String&gt;</span></code>, which is a list of non-null <code class="docutils literal notranslate"><span class="pre">String</span></code>
+references.</p>
+</section>
+<section id="using-type-variables-in-generic-types">
+<h3>Using type variables in generic types<a class="headerlink" href="#using-type-variables-in-generic-types" title="Permalink to this headline"></a></h3>
 <p>Let’s look at what the methods in the <code class="docutils literal notranslate"><span class="pre">List</span></code> interface might look like:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@NullMarked</span>
 <span class="n">public</span> <span class="n">interface</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">E</span> <span class="n">extends</span> <span class="nd">@Nullable</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="p">{</span>
@@ -402,33 +312,32 @@ write <code class="docutils literal notranslate"><span class="pre">ImmutableList
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The parameter type <code class="docutils literal notranslate"><span class="pre">E</span></code> of <code class="docutils literal notranslate"><span class="pre">add</span></code> means a reference that is compatible with the actual
-type of the <code class="docutils literal notranslate"><span class="pre">List</span></code> elements. Just as you can’t add an <code class="docutils literal notranslate"><span class="pre">Integer</span></code> to a <code class="docutils literal notranslate"><span class="pre">List&lt;String&gt;</span></code>,
-you also can’t add a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String</span></code> to a <code class="docutils literal notranslate"><span class="pre">List&lt;String&gt;</span></code>, but you <em>can</em> add it to a
-<code class="docutils literal notranslate"><span class="pre">List&lt;&#64;Nullable</span> <span class="pre">String&gt;</span></code>.</p>
-<p>Similarly, the return type <code class="docutils literal notranslate"><span class="pre">E</span></code> of <code class="docutils literal notranslate"><span class="pre">get</span></code> means that it returns a reference with the
-actual type of the list elements. If the list is a <code class="docutils literal notranslate"><span class="pre">List&lt;&#64;Nullable</span> <span class="pre">String&gt;</span></code> then
-that reference is a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String</span></code>. If the list is a <code class="docutils literal notranslate"><span class="pre">List&lt;String&gt;</span></code> then the
-reference is a <code class="docutils literal notranslate"><span class="pre">String</span></code>.</p>
+<p>The parameter type <code class="docutils literal notranslate"><span class="pre">E</span></code> of <code class="docutils literal notranslate"><span class="pre">add</span></code> means a reference that is compatible with the
+actual type of the <code class="docutils literal notranslate"><span class="pre">List</span></code> elements. Just as you can’t add an <code class="docutils literal notranslate"><span class="pre">Integer</span></code> to a
+<code class="docutils literal notranslate"><span class="pre">List&lt;String&gt;</span></code>, you also can’t add a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String</span></code> to a <code class="docutils literal notranslate"><span class="pre">List&lt;String&gt;</span></code>, but
+you <em>can</em> add it to a <code class="docutils literal notranslate"><span class="pre">List&lt;&#64;Nullable</span> <span class="pre">String&gt;</span></code>.</p>
+<p>Similarly, the return type <code class="docutils literal notranslate"><span class="pre">E</span></code> of <code class="docutils literal notranslate"><span class="pre">get</span></code> means that it returns a reference with
+the actual type of the list elements. If the list is a <code class="docutils literal notranslate"><span class="pre">List&lt;&#64;Nullable</span> <span class="pre">String&gt;</span></code>
+then that reference is a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String</span></code>. If the list is a <code class="docutils literal notranslate"><span class="pre">List&lt;String&gt;</span></code>
+then the reference is a <code class="docutils literal notranslate"><span class="pre">String</span></code>.</p>
 <p>On the other hand, the return type <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">E</span></code> of the (fictitious) <code class="docutils literal notranslate"><span class="pre">getFirst</span></code>
 method is always <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code>. It will be <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String</span></code> whether called on a
-<code class="docutils literal notranslate"><span class="pre">List&lt;&#64;Nullable</span> <span class="pre">String&gt;</span></code> or a <code class="docutils literal notranslate"><span class="pre">List&lt;String&gt;</span></code>. The idea is that the method returns
-the first element of the list, or null if the list is empty. Similarly, the real
-methods <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">V</span> <span class="pre">get(Object</span> <span class="pre">key)</span></code> in <code class="docutils literal notranslate"><span class="pre">Map</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">E</span> <span class="pre">peek()</span></code> in <code class="docutils literal notranslate"><span class="pre">Queue</span></code> can
-return null even when <code class="docutils literal notranslate"><span class="pre">V</span></code> and <code class="docutils literal notranslate"><span class="pre">E</span></code> can’t be null.</p>
+<code class="docutils literal notranslate"><span class="pre">List&lt;&#64;Nullable</span> <span class="pre">String&gt;</span></code> or a <code class="docutils literal notranslate"><span class="pre">List&lt;String&gt;</span></code>. The idea is that the method
+returns the first element of the list, or null if the list is empty. Similarly,
+the real methods <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">V</span> <span class="pre">get(Object</span> <span class="pre">key)</span></code> in <code class="docutils literal notranslate"><span class="pre">Map</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">E</span> <span class="pre">peek()</span></code>
+in <code class="docutils literal notranslate"><span class="pre">Queue</span></code> can return null even when <code class="docutils literal notranslate"><span class="pre">V</span></code> and <code class="docutils literal notranslate"><span class="pre">E</span></code> can’t be null.</p>
 <p>The distinction here is an important one that is worth repeating. A use of a
-type variable like <code class="docutils literal notranslate"><span class="pre">E</span></code> should only be <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">E</span></code> if it means a reference that can
-be null <em>even if</em> <code class="docutils literal notranslate"><span class="pre">E</span></code> itself can’t be null. Otherwise, plain <code class="docutils literal notranslate"><span class="pre">E</span></code> means a reference
-that can only be null if <code class="docutils literal notranslate"><span class="pre">E</span></code> is a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> type, like <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String</span></code> in this
-example. (And, as we’ve seen, <code class="docutils literal notranslate"><span class="pre">E</span></code> can only be a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> type if the definition
-of <code class="docutils literal notranslate"><span class="pre">E</span></code> has a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> bound like <code class="docutils literal notranslate"><span class="pre">&lt;E</span> <span class="pre">extends</span> <span class="pre">&#64;Nullable</span> <span class="pre">Object&gt;</span></code>.)</p>
+type variable like <code class="docutils literal notranslate"><span class="pre">E</span></code> should only be <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">E</span></code> if it means a reference that
+can be null <em>even if</em> <code class="docutils literal notranslate"><span class="pre">E</span></code> itself can’t be null. Otherwise, plain <code class="docutils literal notranslate"><span class="pre">E</span></code> means a
+reference that can only be null if <code class="docutils literal notranslate"><span class="pre">E</span></code> is a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> type, like <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String</span></code> in this example. (And, as we’ve seen, <code class="docutils literal notranslate"><span class="pre">E</span></code> can only be a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> type
+if the definition of <code class="docutils literal notranslate"><span class="pre">E</span></code> has a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> bound like <code class="docutils literal notranslate"><span class="pre">&lt;E</span> <span class="pre">extends</span> <span class="pre">&#64;Nullable</span> <span class="pre">Object&gt;</span></code>.)</p>
 <p>We saw earlier that <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code> usually means “references can’t be null unless
-they are marked <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code>”, and also that that doesn’t apply to local variables.
-Here we see that it doesn’t apply to type variable uses either. When not marked
-<code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code>, they can still be null if they have a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> bound.</p>
-</div>
-<div class="section" id="using-type-variables-in-generic-methods">
-<h3>Using type variables in generic methods<a class="headerlink" href="#using-type-variables-in-generic-methods" title="Permalink to this headline">¶</a></h3>
+they are marked <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code>”, and also that that doesn’t apply to local
+variables. Here we see that it doesn’t apply to type variable uses either. When
+not marked <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code>, they can still be null if they have a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> bound.</p>
+</section>
+<section id="using-type-variables-in-generic-methods">
+<h3>Using type variables in generic methods<a class="headerlink" href="#using-type-variables-in-generic-methods" title="Permalink to this headline"></a></h3>
 <p>Essentially the same considerations that we just saw with generic types apply to
 generic methods too. Here’s an example:</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@NullMarked</span>
@@ -455,20 +364,20 @@ generic methods too. Here’s an example:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">firstOrNull</span></code> method will accept a <code class="docutils literal notranslate"><span class="pre">List&lt;String&gt;</span></code> but not a <code class="docutils literal notranslate"><span class="pre">List&lt;&#64;Nullable</span> <span class="pre">String&gt;</span></code>. When given an argument of type <code class="docutils literal notranslate"><span class="pre">List&lt;String&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">T</span></code> is <code class="docutils literal notranslate"><span class="pre">String</span></code>, so the return
-type <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">T</span></code> is <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String</span></code>. The input list can’t contain null
-elements, but the return value can be null.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">firstOrNonNullDefault</span></code> method again does not allow <code class="docutils literal notranslate"><span class="pre">T</span></code> to be a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> type,
-so <code class="docutils literal notranslate"><span class="pre">List&lt;&#64;Nullable</span> <span class="pre">String&gt;</span></code> is not allowed. Now the return value is not <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code>
-either which means it will never be null.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">firstOrNull</span></code> method will accept a <code class="docutils literal notranslate"><span class="pre">List&lt;String&gt;</span></code> but not a <code class="docutils literal notranslate"><span class="pre">List&lt;&#64;Nullable</span> <span class="pre">String&gt;</span></code>. When given an argument of type <code class="docutils literal notranslate"><span class="pre">List&lt;String&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">T</span></code> is <code class="docutils literal notranslate"><span class="pre">String</span></code>, so the
+return type <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">T</span></code> is <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String</span></code>. The input list can’t contain
+null elements, but the return value can be null.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">firstOrNonNullDefault</span></code> method again does not allow <code class="docutils literal notranslate"><span class="pre">T</span></code> to be a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code>
+type, so <code class="docutils literal notranslate"><span class="pre">List&lt;&#64;Nullable</span> <span class="pre">String&gt;</span></code> is not allowed. Now the return value is not
+<code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> either which means it will never be null.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">firstOrDefault</span></code> method will accept both <code class="docutils literal notranslate"><span class="pre">List&lt;String&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">List&lt;&#64;Nullable</span> <span class="pre">String&gt;</span></code>. In the first case, <code class="docutils literal notranslate"><span class="pre">T</span></code> is <code class="docutils literal notranslate"><span class="pre">String</span></code>, so the type of the <code class="docutils literal notranslate"><span class="pre">defaultValue</span></code>
-parameter and of the return value is <code class="docutils literal notranslate"><span class="pre">String</span></code>, meaning neither can be null. In the
-second case, <code class="docutils literal notranslate"><span class="pre">T</span></code> is <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String</span></code>, so the type of <code class="docutils literal notranslate"><span class="pre">defaultValue</span></code> and of the
-return value is <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String</span></code>, meaning both can be null.</p>
+parameter and of the return value is <code class="docutils literal notranslate"><span class="pre">String</span></code>, meaning neither can be null. In
+the second case, <code class="docutils literal notranslate"><span class="pre">T</span></code> is <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String</span></code>, so the type of <code class="docutils literal notranslate"><span class="pre">defaultValue</span></code> and of
+the return value is <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String</span></code>, meaning both can be null.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">firstOrNullableDefault</span></code> method again accepts both <code class="docutils literal notranslate"><span class="pre">List&lt;String&gt;</span></code> and
-<code class="docutils literal notranslate"><span class="pre">List&lt;&#64;Nullable</span> <span class="pre">String&gt;</span></code>, but now the <code class="docutils literal notranslate"><span class="pre">defaultValue</span></code> parameter is marked <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code>
-so it can be null even in the <code class="docutils literal notranslate"><span class="pre">List&lt;String&gt;</span></code> case. Likewise the return value is
-<code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">T</span></code> so it can be null even when <code class="docutils literal notranslate"><span class="pre">T</span></code> can’t.</p>
+<code class="docutils literal notranslate"><span class="pre">List&lt;&#64;Nullable</span> <span class="pre">String&gt;</span></code>, but now the <code class="docutils literal notranslate"><span class="pre">defaultValue</span></code> parameter is marked
+<code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> so it can be null even in the <code class="docutils literal notranslate"><span class="pre">List&lt;String&gt;</span></code> case. Likewise the
+return value is <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">T</span></code> so it can be null even when <code class="docutils literal notranslate"><span class="pre">T</span></code> can’t.</p>
 <p>Here’s another example:</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span>  <span class="kd">public</span> <span class="kd">static</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">List</span><span class="o">&lt;</span><span class="nd">@Nullable</span> <span class="n">T</span><span class="o">&gt;</span> <span class="nf">nullOutMatches</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">list</span><span class="p">,</span> <span class="n">T</span> <span class="n">toRemove</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">List</span><span class="o">&lt;</span><span class="nd">@Nullable</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">copy</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">list</span><span class="p">);</span>
@@ -485,41 +394,43 @@ so it can be null even in the <code class="docutils literal notranslate"><span c
 produces a <code class="docutils literal notranslate"><span class="pre">List&lt;&#64;Nullable</span> <span class="pre">T&gt;</span></code>, with null in place of every element that matched
 <code class="docutils literal notranslate"><span class="pre">toRemove</span></code>. The output is a <code class="docutils literal notranslate"><span class="pre">List&lt;&#64;Nullable</span> <span class="pre">T&gt;</span></code> because it <em>can</em> contain null
 elements, even if <code class="docutils literal notranslate"><span class="pre">T</span></code> itself can’t be null.</p>
-</div>
-</div>
-<div class="section" id="some-subtler-details">
-<h2>Some subtler details<a class="headerlink" href="#some-subtler-details" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="some-subtler-details">
+<h2>Some subtler details<a class="headerlink" href="#some-subtler-details" title="Permalink to this headline"></a></h2>
 <p>The previous sections cover 99% of everything you need to know to be able to use
 JSpecify annotations effectively. Here we’ll cover a few details you probably
 won’t need to know.</p>
-<div class="section" id="type-use-annotation-syntax">
-<h3>Type-use annotation syntax<a class="headerlink" href="#type-use-annotation-syntax" title="Permalink to this headline">¶</a></h3>
+<section id="type-use-annotation-syntax">
+<h3>Type-use annotation syntax<a class="headerlink" href="#type-use-annotation-syntax" title="Permalink to this headline"></a></h3>
 <p>There are a couple of places where the syntax of type-use annotations like
 <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> may be surprising.</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>For a nested static type like <code class="docutils literal notranslate"><span class="pre">Map.Entry</span></code>, if you want to say that the value
 can be null then the syntax is <code class="docutils literal notranslate"><span class="pre">Map.&#64;Nullable</span> <span class="pre">Entry</span></code>. You can often avoid
 dealing with this by importing the nested type directly, but in this case
 <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">java.util.Map.Entry</span></code> might be undesirable because <code class="docutils literal notranslate"><span class="pre">Entry</span></code> is such a
 common type name.</p></li>
-<li><p>For an array type, if you want to say that the <em>elements</em> of the array can be null
-then the syntax is <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String[]</span></code>. If you want to say that the <em>array itself</em>
-can be null then the syntax is <code class="docutils literal notranslate"><span class="pre">String</span> <span class="pre">&#64;Nullable</span> <span class="pre">[]</span></code>. And if both the elements and
-the array itself can be null, the syntax is <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String</span> <span class="pre">&#64;Nullable</span> <span class="pre">[]</span></code>.</p></li>
+<li><p>For an array type, if you want to say that the <em>elements</em> of the array can
+be null then the syntax is <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String[]</span></code>. If you want to say that the
+<em>array itself</em> can be null then the syntax is <code class="docutils literal notranslate"><span class="pre">String</span> <span class="pre">&#64;Nullable</span> <span class="pre">[]</span></code>. And if
+both the elements and the array itself can be null, the syntax is <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String</span> <span class="pre">&#64;Nullable</span> <span class="pre">[]</span></code>.</p></li>
 </ol>
 <p>A good way to remember this is that it is the thing right after <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> that
-can be null. It is the <code class="docutils literal notranslate"><span class="pre">Entry</span></code> that can be null in <code class="docutils literal notranslate"><span class="pre">Map.&#64;Nullable</span> <span class="pre">Entry</span></code>,
-not the <code class="docutils literal notranslate"><span class="pre">Map</span></code>. It is the <code class="docutils literal notranslate"><span class="pre">String</span></code> that can be null in <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String[]</span></code> and it is the <code class="docutils literal notranslate"><span class="pre">[]</span></code>, meaning the array, that can be null in <code class="docutils literal notranslate"><span class="pre">String</span> <span class="pre">&#64;Nullable</span> <span class="pre">[]</span></code>.</p>
-</div>
-<div class="section" id="wildcard-bounds">
-<h3>Wildcard bounds<a class="headerlink" href="#wildcard-bounds" title="Permalink to this headline">¶</a></h3>
+can be null. It is the <code class="docutils literal notranslate"><span class="pre">Entry</span></code> that can be null in <code class="docutils literal notranslate"><span class="pre">Map.&#64;Nullable</span> <span class="pre">Entry</span></code>, not
+the <code class="docutils literal notranslate"><span class="pre">Map</span></code>. It is the <code class="docutils literal notranslate"><span class="pre">String</span></code> that can be null in <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span> <span class="pre">String[]</span></code> and it is
+the <code class="docutils literal notranslate"><span class="pre">[]</span></code>, meaning the array, that can be null in <code class="docutils literal notranslate"><span class="pre">String</span> <span class="pre">&#64;Nullable</span> <span class="pre">[]</span></code>.</p>
+</section>
+<section id="wildcard-bounds">
+<h3>Wildcard bounds<a class="headerlink" href="#wildcard-bounds" title="Permalink to this headline"></a></h3>
 <p>Inside <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code>, wildcard bounds work almost exactly the same as type
-variable bounds. We saw that <code class="docutils literal notranslate"><span class="pre">&lt;E</span> <span class="pre">extends</span> <span class="pre">&#64;Nullable</span> <span class="pre">Number&gt;</span></code> means that E can be a
-<code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> type and <code class="docutils literal notranslate"><span class="pre">&lt;E</span> <span class="pre">extends</span> <span class="pre">Number&gt;</span></code> means it can’t. Likewise, <code class="docutils literal notranslate"><span class="pre">List&lt;?</span> <span class="pre">extends</span> <span class="pre">&#64;Nullable</span> <span class="pre">Number&gt;</span></code> means a list where the elements can be null, and <code class="docutils literal notranslate"><span class="pre">List&lt;?</span> <span class="pre">extends</span> <span class="pre">Number&gt;</span></code> means they can’t.</p>
+variable bounds. We saw that <code class="docutils literal notranslate"><span class="pre">&lt;E</span> <span class="pre">extends</span> <span class="pre">&#64;Nullable</span> <span class="pre">Number&gt;</span></code> means that E can be
+a <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code> type and <code class="docutils literal notranslate"><span class="pre">&lt;E</span> <span class="pre">extends</span> <span class="pre">Number&gt;</span></code> means it can’t. Likewise, <code class="docutils literal notranslate"><span class="pre">List&lt;?</span> <span class="pre">extends</span> <span class="pre">&#64;Nullable</span> <span class="pre">Number&gt;</span></code> means a list where the elements can be null, and
+<code class="docutils literal notranslate"><span class="pre">List&lt;?</span> <span class="pre">extends</span> <span class="pre">Number&gt;</span></code> means they can’t.</p>
 <p>However, there’s a difference when there is no explicit bound. We saw that a
-type variable definition like <code class="docutils literal notranslate"><span class="pre">&lt;E&gt;</span></code> means <code class="docutils literal notranslate"><span class="pre">&lt;E</span> <span class="pre">extends</span> <span class="pre">Object&gt;</span></code> and that means it is
-not <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code>. But <code class="docutils literal notranslate"><span class="pre">&lt;?&gt;</span></code> actually means <code class="docutils literal notranslate"><span class="pre">&lt;?</span> <span class="pre">extends</span> <span class="pre">B&gt;</span></code>, where <code class="docutils literal notranslate"><span class="pre">B</span></code> is the bound of the
-corresponding type variable. So if we have</p>
+type variable definition like <code class="docutils literal notranslate"><span class="pre">&lt;E&gt;</span></code> means <code class="docutils literal notranslate"><span class="pre">&lt;E</span> <span class="pre">extends</span> <span class="pre">Object&gt;</span></code> and that means it
+is not <code class="docutils literal notranslate"><span class="pre">&#64;Nullable</span></code>. But <code class="docutils literal notranslate"><span class="pre">&lt;?&gt;</span></code> actually means <code class="docutils literal notranslate"><span class="pre">&lt;?</span> <span class="pre">extends</span> <span class="pre">B&gt;</span></code>, where <code class="docutils literal notranslate"><span class="pre">B</span></code> is the
+bound of the corresponding type variable. So if we have</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">interface</span> <span class="nc">List</span><span class="o">&lt;</span><span class="n">E</span> <span class="kd">extends</span> <span class="nd">@Nullable</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="p">{...}</span>
 </pre></div>
 </div>
@@ -531,58 +442,41 @@ corresponding type variable. So if we have</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">ImmutableList</span><span class="o">&lt;</span><span class="n">E</span> <span class="kd">extends</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>so <code class="docutils literal notranslate"><span class="pre">ImmutableList&lt;?&gt;</span></code> means the same as <code class="docutils literal notranslate"><span class="pre">ImmutableList&lt;?</span> <span class="pre">extends</span> <span class="pre">Object&gt;</span></code>. And here,
-<code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code> means that <code class="docutils literal notranslate"><span class="pre">Object</span></code> excludes null. The <code class="docutils literal notranslate"><span class="pre">get(int)</span></code> method of <code class="docutils literal notranslate"><span class="pre">List&lt;?&gt;</span></code> can
-return null but the same method of <code class="docutils literal notranslate"><span class="pre">ImmutableList&lt;?&gt;</span></code> can’t.</p>
-</div>
-</div>
-</div>
+<p>so <code class="docutils literal notranslate"><span class="pre">ImmutableList&lt;?&gt;</span></code> means the same as <code class="docutils literal notranslate"><span class="pre">ImmutableList&lt;?</span> <span class="pre">extends</span> <span class="pre">Object&gt;</span></code>. And
+here, <code class="docutils literal notranslate"><span class="pre">&#64;NullMarked</span></code> means that <code class="docutils literal notranslate"><span class="pre">Object</span></code> excludes null. The <code class="docutils literal notranslate"><span class="pre">get(int)</span></code> method of
+<code class="docutils literal notranslate"><span class="pre">List&lt;?&gt;</span></code> can return null but the same method of <code class="docutils literal notranslate"><span class="pre">ImmutableList&lt;?&gt;</span></code> can’t.</p>
+</section>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="spec.html" class="btn btn-neutral float-left" title="JSpecify nullness spec draft" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2018-2021, The JSpecify Authors.
-
-    </p>
+    <p>&#169; Copyright 2018-2022, The JSpecify Authors.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>
