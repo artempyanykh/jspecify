@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkjspecify=self.webpackChunkjspecify||[]).push([[721],{7354:e=>{e.exports=JSON.parse('{"permalink":"/jspecify/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);
